@@ -1,0 +1,5 @@
+now that we have almost polished our product it only true use will be applicable in real time with data base but to present how 
+it will perform we did our best for demo to work as we expect it to
+the system calculates a threat index using a rule based model and maps it to the cyber kill chain to predict potential attack stages we also added an attack simulation 
+feature to show how risk increases dynamically and we are now working on improving
+realism and preparing it for real world data integration
