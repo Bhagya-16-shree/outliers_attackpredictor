@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark SOC theme - applied as default */
+    --background: 230 35% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 230 30% 9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 230 30% 9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 190 95% 55%;
+    --primary-foreground: 230 35% 6%;
+
+    --secondary: 265 85% 65%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 230 25% 14%;
+    --muted-foreground: 220 15% 65%;
+
+    --accent: 265 85% 65%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 90% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --warning: 38 95% 58%;
+    --warning-foreground: 230 35% 6%;
+
+    --success: 145 75% 50%;
+    --success-foreground: 230 35% 6%;
+
+    --border: 230 30% 18%;
+    --input: 230 30% 14%;
+    --ring: 190 95% 55%;
+
+    --radius: 0.75rem;
+
+    /* Neon glows */
+    --glow-cyan: 190 95% 55%;
+    --glow-purple: 265 85% 65%;
+    --glow-red: 0 90% 60%;
+
+    /* Gradients */
+    --gradient-bg: radial-gradient(ellipse at top, hsl(230 40% 12%) 0%, hsl(230 35% 6%) 60%);
+    --gradient-panel: linear-gradient(135deg, hsl(230 30% 11% / 0.8), hsl(230 30% 8% / 0.6));
+    --gradient-cyan: linear-gradient(135deg, hsl(190 95% 55%), hsl(220 90% 60%));
+    --gradient-purple: linear-gradient(135deg, hsl(265 85% 65%), hsl(290 85% 60%));
+    --gradient-danger: linear-gradient(135deg, hsl(0 90% 60%), hsl(15 95% 55%));
+
+    /* Shadows */
+    --shadow-glow-cyan: 0 0 30px hsl(190 95% 55% / 0.35);
+    --shadow-glow-purple: 0 0 30px hsl(265 85% 65% / 0.35);
+    --shadow-glow-red: 0 0 30px hsl(0 90% 60% / 0.4);
+    --shadow-panel: 0 8px 32px hsl(230 50% 2% / 0.6);
+
+    --sidebar-background: 230 30% 8%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 190 95% 55%;
+    --sidebar-primary-foreground: 230 35% 6%;
+    --sidebar-accent: 230 25% 14%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 230 30% 18%;
+    --sidebar-ring: 190 95% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background: var(--gradient-bg);
+    background-attachment: fixed;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Subtle grid background */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(hsl(190 95% 55% / 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(190 95% 55% / 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+    z-index: 0;
+  }
+
+  #root {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    background: var(--gradient-panel);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border));
+    box-shadow: var(--shadow-panel);
+  }
+
+  .glow-cyan {
+    box-shadow: var(--shadow-glow-cyan);
+  }
+  .glow-purple {
+    box-shadow: var(--shadow-glow-purple);
+  }
+  .glow-red {
+    box-shadow: var(--shadow-glow-red);
+  }
+
+  .text-glow-cyan {
+    text-shadow: 0 0 12px hsl(var(--glow-cyan) / 0.6);
+  }
+  .text-glow-red {
+    text-shadow: 0 0 12px hsl(var(--glow-red) / 0.7);
+  }
+}
+
+@layer utilities {
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  .animate-scan {
+    animation: scan 3s linear infinite;
+  }
+  .animate-fade-in-up {
+    animation: fade-in-up 0.4s ease-out both;
+  }
+  .animate-flicker {
+    animation: flicker 4s linear infinite;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; filter: drop-shadow(0 0 8px hsl(var(--primary) / 0.6)); }
+  50% { opacity: 0.7; filter: drop-shadow(0 0 16px hsl(var(--primary) / 0.9)); }
+}
+
+@keyframes scan {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  97% { opacity: 1; }
+  98% { opacity: 0.6; }
+  99% { opacity: 1; }
+}
