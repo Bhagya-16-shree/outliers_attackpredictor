@@ -1,0 +1,2 @@
+Attack Predictor is completed and fully functional. Our AI-powered pre-attack detection system accurately identifies cyber attack precursors , reconnaissance, weaponization, and delivery and before exploitation occurs. The frontend website operates seamlessly with no backend dependencies, delivering real-time probability scores, MITRE ATT&CK mapping, interactive demo scenarios, and counterfactual explanations. All features have been tested and verified to work reliably,
+providing defenders with early warning to block attacks proactively.
